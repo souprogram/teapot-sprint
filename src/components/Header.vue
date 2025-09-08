@@ -11,7 +11,7 @@ const isHomePage = computed(() => route.path=='/');
     <header class="w-full p-4 fixed top-0 left-0 z-10">
         <nav class="flex items-center justify-between relative z-10">
             <RouterLink to='/' class="text-black hover:text-white">
-                Hachathon
+                Hackathon
             </RouterLink>
             <div class="flex items-center space-x-6">
                 <RouterLink :to="{ path: '/', hash: '#about'}" class="text-black hover:text-white">

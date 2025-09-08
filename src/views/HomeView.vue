@@ -16,10 +16,15 @@ const isHomePage = computed(() => route.path=='/');
 
 <template>
     <div class="min-h-screen">
-        <section id="home" class="min-h-screen flex items-center justify-center">
+        <section id="home" class="min-h-screen flex items-center justify-center gap-5">
             <div class="text-center text-white">
                 <h1 class="text-6xl font-bold mb-6">Dobrodošli na Hackathon</h1>
                 <p class="text-xl mb-8">Najveći tech događaj godine</p>
+                <RouterLink 
+                    to="/registracija" 
+                    class="inline-block bg-white hover:bg-orange-600 text-black font-bold py-3 px-8 rounded-lg transition duration-200">
+                    Registriraj se sada
+                </RouterLink>
             </div>
         </section>
     </div>

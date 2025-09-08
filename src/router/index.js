@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import HackathonView from '@/views/HackathonView.vue'
 import BlogView from '@/views/BlogView.vue'
+import BlogPost from '@/views/BlogPost.vue'
 import LokacijaView from '@/views/LokacijaView.vue'
 import NagradeView from '@/views/NagradeView.vue'
 import ProgramView from '@/views/ProgramView.vue'
@@ -28,6 +29,12 @@ const router = createRouter({
       path: '/blog',
       name: 'blog',
       component: BlogView,
+    },
+    {
+      path: '/blog/:id',
+      name: 'BlogPost',
+      component: BlogPost
+
     },
     {
       path: '/lokacija',
