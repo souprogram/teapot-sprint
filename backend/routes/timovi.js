@@ -63,7 +63,7 @@ router.get('/:id', async(req, res) => {
     const { data: clanovi, error: clanoviError } = await supabase
     .from('Natjecatelji')
     .select('id, name, surname')
-    .eq('tim_id', id);
+    .eq('id', id);
 
     if (clanoviError) return res.status(500).json({ error: clanoviError.message });
     res.json({ ...tim, Natjecatelji: clanovi });

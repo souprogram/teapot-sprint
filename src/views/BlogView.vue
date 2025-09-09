@@ -19,8 +19,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="p-6 grid gap-4">
-        <div v-if="korisnikStore.isAdmin" class="absolute top-30 right-0">
+    <div class="p-6 grid gap-4 relative">
+        <div v-if="korisnikStore.isAdmin" class="absolute -top-5 right-0">
             <RouterLink to="/admin" class="text-white px-4 py-2 rounded hover:underline">
                 Dodaj novi blog
             </RouterLink>

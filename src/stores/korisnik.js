@@ -34,7 +34,7 @@ export const useKorisnikStore = defineStore('korisnik', () => {
         const { data: prof } = await supabase
             .from('Users')
             .select('*')
-            .eq('user_id', data.user.id)
+            .eq('id', data.user.id)
             .single()
 
         profil.value = prof
@@ -53,7 +53,7 @@ export const useKorisnikStore = defineStore('korisnik', () => {
             const { data: prof } = await supabase
                 .from('Users')
                 .select('*')
-                .eq('user_id', data.user.id)
+                .eq('id', data.user.id)
                 .single()
             profil.value = prof
         }

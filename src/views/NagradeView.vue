@@ -9,7 +9,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <div class="w-screen min-h-screen flex flex-col text-white">
+    <div class="min-h-screen flex flex-col text-white">
         <div class="w-full rounded-lg p-8">
             <h1 class="text-5xl text-center p-4 font-bold mb-3">NAGRADE KOJE MOŽETE OSVOJITI</h1>
             <p class="text-white/90 text-center leading-relaxed">

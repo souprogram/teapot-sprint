@@ -7,7 +7,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <div class="w-screen h-screen flex flex-col items-center justify-center p-4">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
         <div class="flex flex-col px-2">
             <div class="w-full rounded-lg p-5 text-white">
                 <h1 class="text-4xl font-bold mb-2">Sponzori natjecanja</h1>

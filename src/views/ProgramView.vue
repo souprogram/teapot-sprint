@@ -41,7 +41,7 @@ const odabir = ref("ČETVRTAK")
 </script>
 
 <template>
-  <div class="w-screen min-h-screen flex items-center justify-center bg-brown p-6">
+  <div class="min-h-screen flex items-center justify-center bg-brown p-6">
     <div class="w-full max-w-3xl">
       <div class="flex space-x-8 text-white text-lg mb-4 border-b border-gray-500">
         <button
