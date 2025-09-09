@@ -10,7 +10,7 @@ import ScoreboardView from '@/views/ScoreboardView.vue'
 import SponzoriView from '@/views/SponzoriView.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegistracijaView from '@/views/RegistracijaView.vue'
-
+import AdminBlog from '@/views/AdminBlog.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +35,11 @@ const router = createRouter({
       name: 'BlogPost',
       component: BlogPost
 
+    },
+    {
+      path: '/admin',
+      name: 'AdminBlog',
+      component: AdminBlog
     },
     {
       path: '/lokacija',

@@ -27,15 +27,15 @@ const dodajObjavu = async() => {
 
 </script>
 <template>
-    <div class="p-6 max-w-xl mx-auto">
+    <div class="p-6 max-w-xl mx-auto pt-40 text-white">
     <h2 class="text-xl font-bold mb-4">Dodaj novu objavu</h2>
 
     <div class="flex flex-col gap-3">
-      <input v-model="naslov" placeholder="Naslov" class="border p-2 rounded" />
-      <textarea v-model="content" placeholder="Sadržaj" rows="5" class="border p-2 rounded"></textarea>
-      <input v-model="image" placeholder="URL slike (opcionalno)" class="border p-2 rounded" />
+      <input v-model="naslov" placeholder="Naslov" class="border p-2 rounded text-white" />
+      <textarea v-model="content" placeholder="Sadržaj" rows="5" class="border p-2 rounded text-white"></textarea>
+      <input v-model="image" placeholder="URL slike (opcionalno)" class="border p-2 rounded text-white" />
 
-      <button @click="dodajObjavu" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+      <button @click="dodajObjavu" class="bg-white/15 text-white px-4 py-2 rounded-lg hover:bg-orange-500">
         Dodaj objavu
       </button>
 

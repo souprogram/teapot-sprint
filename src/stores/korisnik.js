@@ -1,28 +1,61 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { supabase } from '../stores/supabaseClient';
 
 const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 
 export const useKorisnikStore = defineStore('korisnik', () => {
     const korisnici = ref([]) 
     const trenutni_korisnik = ref(null) 
+    const profil = ref(null)
 
-    function registriraj(noviKorisnik) {
-        const postoji = korisnici.value.some(k => k.email === noviKorisnik.email)
-        if (postoji) {
-            return { uspjeh: false, poruka: 'Email već postoji.' }
+    async function registriraj(noviKorisnik) {
+        try {
+            const res = await fetch('http://localhost:3001/api/registracija', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(noviKorisnik)
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                return { uspjeh: false, poruka: data.error || 'Greška kod registracije' };
+            }
+            return { uspjeh: true, poruka: 'Korisnik uspješno registriran' };
+        } 
+        catch (err) {
+            console.error(err);
+            return { uspjeh: false, poruka: err.message };
         }
-        korisnici.value.push(noviKorisnik)
+    }
+    async function login(email, password) {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+        if (error) return { uspjeh: false, poruka: error.message }
+        trenutni_korisnik.value = data.user
+        const { data: prof } = await supabase
+            .from('Users')
+            .select('*')
+            .eq('user_id', data.user.id)
+            .single()
+
+        profil.value = prof
+
         return { uspjeh: true }
     }
-
-    function login(email, password) {
-        const korisnik = korisnici.value.find(k => k.email === email && k.password === password)
-        if (korisnik) {
-            trenutni_korisnik.value = korisnik
-            return { uspjeh: true }
-        } else {
-        return { uspjeh: false, poruka: 'Pogrešan email ili lozinka' }
+    async function logOut() {
+        await supabase.auth.signOut()
+        trenutni_korisnik.value = null
+        profil.value = null
+    }
+    async function dohvatiKorisnik() {
+        const { data } = await supabase.auth.getUser()
+        trenutni_korisnik.value = data.user;
+        if (data.user) {
+            const { data: prof } = await supabase
+                .from('Users')
+                .select('*')
+                .eq('user_id', data.user.id)
+                .single()
+            profil.value = prof
         }
     }
 
@@ -35,6 +68,9 @@ export const useKorisnikStore = defineStore('korisnik', () => {
         trenutni_korisnik,
         registriraj,
         login,
+        logOut,
+        dohvatiKorisnik,
         isAdmin,
+        profil,
     }
 })

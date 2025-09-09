@@ -26,11 +26,11 @@ export async function createBlog(naslov, content, image=null) {
   }
   return await res.json();
 }
-export async function deleteBlog(id) {
+export async function deleteBlog(id, userEmail) {
   const res = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
     headers: {
-      'x-user-email': import.meta.env.VITE_ADMIN_EMAIL
+      'x-user-email': userEmail
     },
   });
   if (!res.ok) {

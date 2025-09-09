@@ -1,10 +1,20 @@
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
-import { computed } from 'vue';
+import { RouterLink, useRoute, useRouter } from "vue-router";
+import { computed, onMounted } from 'vue';
+import { useKorisnikStore } from "@/stores/korisnik";
 
+const router = useRouter();
 const route = useRoute();
 const isHomePage = computed(() => route.path=='/');
+const korisnik = useKorisnikStore();
 
+onMounted(() => {
+  korisnik.dohvatiKorisnik()
+})
+async function odjava() {
+  await korisnik.logOut()
+  router.push('/')
+}
 </script>
 
 <template>
@@ -35,7 +45,12 @@ const isHomePage = computed(() => route.path=='/');
                 <RouterLink :to="{ path: '/', hash: '#scoreboard'}" class="text-black hover:text-white">
                     Scoreboard
                 </RouterLink>
-                <RouterLink to="/login">Prijava</RouterLink>
+                <div v-if="korisnik.trenutni_korisnik">
+                    <button @click="odjava" class="text-black hover:text-white">Odjava</button>
+                </div>
+                <div v-else>
+                    <RouterLink to="/login" class="text-black hover:text-white">Prijava</RouterLink>
+                </div>
             </div>
         </nav>
     </header>
