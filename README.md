@@ -23,7 +23,10 @@ Glavni cilj stranice je upoznati korisnike sa natjecanjem i lokacijom natjecanja
 Sveučilište Jurja Dobrile u Puli
 
 **Fakultet:** [Fakultet Informatike u Puli](https://fipu.unipu.hr/)
+
 **Akademska godina:** 2024./2025.
+
 **Kolegij:** [Programsko inženjerstvoj](http://ntankovic.unipu.hr/pi)
+
 **Mentor:** [doc. dr. sc. Nikola Tanković](https://fipu.unipu.hr/fipu/nikola.tankovic)
  
