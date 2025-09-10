@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { supabase } from '../stores/supabaseClient';
 
 const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+const API_URL = import.meta.env.VITE_API_URL
 
 export const useKorisnikStore = defineStore('korisnik', () => {
     const korisnici = ref([]) 
@@ -11,7 +12,7 @@ export const useKorisnikStore = defineStore('korisnik', () => {
 
     async function registriraj(noviKorisnik) {
         try {
-            const res = await fetch('http://localhost:3001/api/registracija', {
+            const res = await fetch(`${API_URL}/api/registracija`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(noviKorisnik)
